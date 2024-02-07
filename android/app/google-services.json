@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "36194512093",
+    "project_id": "first-project-c34d6",
+    "storage_bucket": "first-project-c34d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36194512093:android:aeaf6e5207df333bd2ff34",
+        "android_client_info": {
+          "package_name": "com.shreen.be_health"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv6tgYQAwDB_zc-Q3PrNZ4yxYimQR5Akc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
