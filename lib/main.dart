@@ -1,9 +1,10 @@
+import 'package:be_health/View/Screens/Home/NavBar.dart';
+import 'package:be_health/View/Screens/Sign/Login.dart';
 import 'package:be_health/ViewModel/Bloc/GetData/get_data_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'View/Screens/Home/NavBar.dart';
 import 'View/Screens/Sign/Onboard.dart';
 import 'ViewModel/Bloc/Auth/auth_cubit.dart';
 import 'ViewModel/Bloc/calcCubit/calc_cubit.dart';
@@ -18,7 +19,7 @@ void main() async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -27,6 +28,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
+    super.initState();
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
         print('User is currently signed out!');
@@ -34,8 +36,6 @@ class _MyAppState extends State<MyApp> {
         print('User is signed in!');
       }
     });
-    // TODO: implement initState
-    super.initState();
   }
 
   @override
@@ -45,7 +45,7 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(
           create: (context) => CalcCubit(),
         ),
-        BlocProvider(create: (context) => AuthCubit()),
+        BlocProvider(create: (context) => AuthCubit()..getUserFromFireStore(),),
         BlocProvider(
           create: (context) => GetDataCubit()
             ..getWorkoutFromFireStore()
@@ -59,8 +59,8 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: FirebaseAuth.instance.currentUser == null
-            ? onboaredingScreen()
-            : NavBar(),
+            ? const onboaredingScreen()
+            : const NavBar(),
       ),
     );
   }

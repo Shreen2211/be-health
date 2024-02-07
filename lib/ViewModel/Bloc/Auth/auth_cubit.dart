@@ -32,7 +32,7 @@ class AuthCubit extends Cubit<AuthState> {
   static AuthCubit get(context) => BlocProvider.of<AuthCubit>(context);
   var db = FirebaseFirestore.instance;
 
-  Future<void> loginFirebase() async {
+  Future<void>loginFirebase() async {
     emit(LoginLoadingState());
     await FirebaseAuth.instance
         .signInWithEmailAndPassword(
@@ -90,7 +90,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> getUserFromFireStore() async {
     emit(GetUserLoadingState());
     QuerySnapshot user = await FirebaseFirestore.instance
-        .collection(FirebaseKeys.collectionName).where('email',isEqualTo: emailAddress.text)
+        .collection(FirebaseKeys.collectionName).where('email',isEqualTo:FirebaseAuth.instance.currentUser!.email!)
         .get();
     if (user.docs.isNotEmpty) {
       for (final doc in user.docs) {

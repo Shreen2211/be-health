@@ -10,6 +10,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     var cubit = GetDataCubit.get(context);
     return Scaffold(
       backgroundColor: const Color(0xea1a0625),
@@ -163,7 +164,7 @@ class HomePage extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20),
                               child: Image.network(
-                                '${cubit.categories[index]['img']}',
+                                '${cubit.categories[index]['img']}'??'',
                                 fit: BoxFit.cover,
                               ),
                             ),
