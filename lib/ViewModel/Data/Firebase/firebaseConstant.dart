@@ -6,5 +6,5 @@ class FirebaseKeys{
   static String lunch="lunch";
   static String breakFast="break fast";
   static String categories="Categories";
-  static String trending="Tranding";
+  static String trending="Trending";
 }

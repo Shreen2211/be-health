@@ -13,6 +13,8 @@ class PlusCalState extends CalcState {}
 
 class MinWightState extends CalcState {}
 
+class ChangeNotGenderState extends CalcState {}
+
 class PlusAgeState extends CalcState {}
 
 class MinAgeState extends CalcState {}

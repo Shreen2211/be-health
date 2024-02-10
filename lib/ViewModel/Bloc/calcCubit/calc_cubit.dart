@@ -9,18 +9,21 @@ class CalcCubit extends Cubit<CalcState> {
 
   static CalcCubit get(context) => BlocProvider.of<CalcCubit>(context);
   static bool Male = true;
-  int water = 20;
+  int water = 0;
   int cal = 0;
   static double totalCalc = 0;
 
   void changeGender(String gender) {
     if (gender != 'Male') {
       Male = false;
+      emit(ChangeGenderState());
     } else {
       Male = true;
+      emit(ChangeNotGenderState());
+
     }
-    emit(ChangeGenderState());
   }
+
 
   bool isSelectedLoss = false;
   bool isSelectedBuild = false;

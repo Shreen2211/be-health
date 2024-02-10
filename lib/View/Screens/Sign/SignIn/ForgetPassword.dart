@@ -1,8 +1,8 @@
 import 'package:be_health/ViewModel/Bloc/Auth/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../ViewModel/utils/image.dart';
-import '../../component/Widget/inputComponent.dart';
+import '../../../../ViewModel/utils/image.dart';
+import '../../../component/Basic/inputComponent.dart';
 
 class ForgetPassword extends StatelessWidget {
   const ForgetPassword({super.key});
@@ -22,17 +22,20 @@ class ForgetPassword extends StatelessWidget {
           },
           builder: (context, state) {
             return Padding(
-              padding: const EdgeInsets.only(
-                  bottom: 20.0, left: 20.0, right: 20.0),
+              padding:
+                  const EdgeInsets.only(bottom: 20.0, left: 20.0, right: 20.0),
               child: Column(
                 children: [
                   Image.asset(AllImage.logo),
                   const SizedBox(
                     height: 20,
                   ),
-                  const Align(alignment: Alignment.topLeft,
-                      child: Text('Forget Password !',
-                        style: TextStyle(fontSize: 25, color: Colors.white),)),
+                  const Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'Forget Password !',
+                        style: TextStyle(fontSize: 25, color: Colors.white),
+                      )),
                   const SizedBox(
                     height: 20,
                   ),
@@ -46,13 +49,13 @@ class ForgetPassword extends StatelessWidget {
                       },
                       child: cubit.registerShow == false
                           ? const Icon(
-                        Icons.lock,
-                        color: Colors.white,
-                      )
+                              Icons.lock,
+                              color: Colors.white,
+                            )
                           : const Icon(
-                        Icons.lock_open_rounded,
-                        color: Colors.white,
-                      ),
+                              Icons.lock_open_rounded,
+                              color: Colors.white,
+                            ),
                     ),
                     keyboardType: TextInputType.visiblePassword,
                     prefixIcon: const Icon(
@@ -66,20 +69,21 @@ class ForgetPassword extends StatelessWidget {
                   InputComponent(
                     controller: cubit.confirmPassword,
                     text: 'Confirm Password',
-                    obscureText: cubit.registerShowConfirm == false ? true : false,
+                    obscureText:
+                        cubit.registerShowConfirm == false ? true : false,
                     suffixIcon: InkWell(
                       onTap: () {
-                       cubit.registerConfirmPassword();
+                        cubit.registerConfirmPassword();
                       },
                       child: cubit.registerShowConfirm == false
                           ? const Icon(
-                        Icons.lock,
-                        color: Colors.white,
-                      )
+                              Icons.lock,
+                              color: Colors.white,
+                            )
                           : const Icon(
-                        Icons.lock_open_rounded,
-                        color: Colors.white,
-                      ),
+                              Icons.lock_open_rounded,
+                              color: Colors.white,
+                            ),
                     ),
                     keyboardType: TextInputType.visiblePassword,
                     prefixIcon: const Icon(
@@ -99,9 +103,9 @@ class ForgetPassword extends StatelessWidget {
                     height: 60,
                     child: const Center(
                         child: Text(
-                          'Confirm',
-                          style: TextStyle(fontSize: 25, color: Colors.white),
-                        )),
+                      'Confirm',
+                      style: TextStyle(fontSize: 25, color: Colors.white),
+                    )),
                   ),
                 ],
               ),

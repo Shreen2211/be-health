@@ -9,8 +9,13 @@ class ShowPasswordState extends AuthState {}
 
 class RegisterShowPasswordState extends AuthState {}
 
-
 class RegisterConfirmPasswordState extends AuthState {}
+
+class CalcCal extends AuthState {}
+
+class ErrorPassword extends AuthState {}
+
+class SuccessPassword extends AuthState {}
 
 class LoginLoadingState extends AuthState {}
 

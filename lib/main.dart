@@ -1,5 +1,4 @@
 import 'package:be_health/View/Screens/Home/NavBar.dart';
-import 'package:be_health/View/Screens/Sign/Login.dart';
 import 'package:be_health/ViewModel/Bloc/GetData/get_data_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +19,9 @@ void main() async {
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+  static bool sign=false;
+  static String currentEmail='';
+
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -29,11 +31,13 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) async {
       if (user == null) {
         print('User is currently signed out!');
       } else {
         print('User is signed in!');
+        MyApp.sign =true;
+        MyApp.currentEmail=user.email!;
       }
     });
   }
@@ -45,7 +49,7 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(
           create: (context) => CalcCubit(),
         ),
-        BlocProvider(create: (context) => AuthCubit()..getUserFromFireStore(),),
+        BlocProvider(create: (context) => AuthCubit(),),
         BlocProvider(
           create: (context) => GetDataCubit()
             ..getWorkoutFromFireStore()

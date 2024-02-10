@@ -1,7 +1,8 @@
+import 'package:be_health/ViewModel/utils/color.dart';
 import 'package:flutter/material.dart';
 
 import '../../../ViewModel/utils/image.dart';
-import 'Login.dart';
+import 'SignIn/Login.dart';
 
 class onboaredingScreen extends StatefulWidget {
   const onboaredingScreen({super.key});
@@ -22,7 +23,7 @@ class _onboaredingScreenState extends State<onboaredingScreen> {
   List<String> Qoute = [
     'Take care of your body. It\'s the only place you have to live in.',
     'It is health that is real wealth and not pieces of gold and silver.',
-    'It is health that is real wealth and not pieces of gold and silver.'
+    'Everything is hard before it is easy'
   ];
 
   Widget build(BuildContext context) {
@@ -74,7 +75,7 @@ class _onboaredingScreenState extends State<onboaredingScreen> {
                       CircleAvatar(
                         radius: pageNum == 0 ? 10 : 5,
                         backgroundColor:
-                            pageNum == 0 ? Colors.white : Colors.grey,
+                            pageNum == 0 ? myColor.textTitle : myColor.skipColor,
                       ),
                       const SizedBox(
                         width: 10,
@@ -82,7 +83,7 @@ class _onboaredingScreenState extends State<onboaredingScreen> {
                       CircleAvatar(
                         radius: pageNum == 1 ? 10 : 5,
                         backgroundColor:
-                            pageNum == 1 ? Colors.white : Colors.grey,
+                            pageNum == 1 ? myColor.textTitle : myColor.skipColor,
                       ),
                       const SizedBox(
                         width: 10,
@@ -90,7 +91,7 @@ class _onboaredingScreenState extends State<onboaredingScreen> {
                       CircleAvatar(
                         radius: pageNum == 2 ? 10 : 5,
                         backgroundColor:
-                            pageNum == 2 ? Colors.white : Colors.grey,
+                            pageNum == 2 ?myColor.textTitle : myColor.skipColor,
                       )
                     ],
                   ),
@@ -99,7 +100,7 @@ class _onboaredingScreenState extends State<onboaredingScreen> {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:const Color(0xFFE09C4A),
+                      backgroundColor:myColor.backButton,
                     ),
                       onPressed: () {
                         if (pageNum != 2) {

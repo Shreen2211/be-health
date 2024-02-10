@@ -1,13 +1,14 @@
-import 'package:be_health/View/Screens/Sign/Login.dart';
-import 'package:be_health/View/component/Widget/elevated_Button_Custom.dart';
-import 'package:be_health/View/component/Widget/inputComponent.dart';
+import 'package:be_health/View/Screens/Sign/SignIn/Login.dart';
 import 'package:be_health/ViewModel/Bloc/Auth/auth_cubit.dart';
-import 'package:be_health/ViewModel/Bloc/calcCubit/calc_cubit.dart';
 import 'package:be_health/ViewModel/utils/color.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+import '../../component/Basic/elevated_Button_Custom.dart';
+import '../../component/Basic/inputComponent.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -23,22 +24,17 @@ class Profile extends StatelessWidget {
             // TODO: implement listener
           },
           builder: (context, state) {
-           if(cubit.Gender=='female'){
-              CalcCubit.totalCalc=((cubit.userData[0]['wight'])*10)+((cubit.userData[0]['height'])*6.25)-((cubit.userData[0]['age'])*5)+5;
-            }else{
-             CalcCubit.totalCalc=((cubit.userData[0]['wight'])*10)+((cubit.userData[0]['height'])*6.25)-((cubit.userData[0]['age'])*5)-161;
-           }
             return Padding(
               padding: const EdgeInsets.all(20),
               child: Center(
                 child: Column(
                   children: [
-                     Stack(
+                    Stack(
                       children: [
                         CircleAvatar(
                           radius: 60,
-                          backgroundImage: NetworkImage(
-                              '${cubit.userData[0]['img']}'),
+                          backgroundImage:
+                              NetworkImage('${cubit.userData[0]['img']}'),
                         ),
                         Positioned(
                           top: 80,
@@ -54,13 +50,16 @@ class Profile extends StatelessWidget {
                       height: 15,
                     ),
                     Text(
-                      '${cubit.userData[0]['name']}',
-                      style: const TextStyle(fontSize: 30, color: myColor.textTitle),
-                    ),const SizedBox(
+                      '${cubit.userData[0]['firstName']} ${cubit.userData[0]['lastName']}',
+                      style: const TextStyle(
+                          fontSize: 30, color: myColor.textTitle),
+                    ),
+                    const SizedBox(
                       height: 10,
                     ),
                     Text('${cubit.userData[0]['email']}',
-                      style: const TextStyle(fontSize: 17, color: myColor.textTitle)),
+                        style: const TextStyle(
+                            fontSize: 17, color: myColor.textTitle)),
                     const SizedBox(
                       height: 15,
                     ),
@@ -82,7 +81,6 @@ class Profile extends StatelessWidget {
                                     color: myColor.textTitle),
                                 text: '${cubit.userData[0]['Gender']}',
                                 readOnly: true,
-
                               ),
                               const SizedBox(
                                 height: 10,
@@ -109,7 +107,7 @@ class Profile extends StatelessWidget {
                                 height: 10,
                               ),
                               InputComponent(
-                                controller: cubit.newHight,
+                                controller: cubit.newHeight,
                                 prefixIcon: const Icon(Icons.height,
                                     color: myColor.textTitle),
                                 text: '${cubit.userData[0]['height']}',
@@ -133,7 +131,6 @@ class Profile extends StatelessWidget {
                                     color: myColor.textTitle),
                                 text: 'Be health',
                                 readOnly: true,
-
                               ),
                               const SizedBox(
                                 height: 10,
@@ -147,8 +144,14 @@ class Profile extends StatelessWidget {
                     elevetedButtonCustom(
                         text: "Sign Out",
                         onPressed: () async {
+                          GoogleSignIn googleSignIn=GoogleSignIn();
+                          googleSignIn.disconnect();
                           await FirebaseAuth.instance.signOut().then((value) {
-                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login(),));
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Login(),
+                                ));
                           });
                         }),
                   ],

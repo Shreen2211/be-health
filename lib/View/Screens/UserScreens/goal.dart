@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../ViewModel/utils/image.dart';
-import '../../component/Widget/containerCustom.dart';
+import '../../component/Basic/containerCustom.dart';
 
 class Sessions extends StatelessWidget {
   const Sessions({super.key});
@@ -57,6 +57,7 @@ class Sessions extends StatelessWidget {
                       // TODO: implement listener
                     },
                     builder: (context, state) {
+
                       return contianerCustom(
                         width: 370,
                         height: 280,

@@ -2,8 +2,9 @@ import 'package:be_health/ViewModel/Bloc/calcCubit/calc_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../ViewModel/utils/image.dart';
-import '../../../component/Widget/Gender.dart';
+import '../../../../../ViewModel/utils/image.dart';
+
+import '../../../../component/Widget/Gender.dart';
 
 class genderGroup extends StatelessWidget {
   const genderGroup({super.key});
@@ -15,7 +16,7 @@ class genderGroup extends StatelessWidget {
         // TODO: implement listener
       },
       builder: (context, state) {
-        var cubit=CalcCubit.get(context);
+        var cubit = CalcCubit.get(context);
         return Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -23,7 +24,7 @@ class genderGroup extends StatelessWidget {
               onTap: () {
                 cubit.changeGender('Male');
               },
-              isSelected: CalcCubit.Male==true? true:false,
+              isSelected: CalcCubit.Male == true ? true : false,
               text: 'Male',
               textImage: AllImage.male,
             ),
@@ -34,7 +35,7 @@ class genderGroup extends StatelessWidget {
               onTap: () {
                 cubit.changeGender('Female');
               },
-              isSelected: CalcCubit.Male==true?false:true,
+              isSelected: CalcCubit.Male == true ? false : true,
               text: 'Female',
               textImage: AllImage.female,
             ),

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../UserScreens/Diet Plan.dart';
 import 'HomePage.dart';
 import '../UserScreens/Profile.dart';
-import '../UserScreens/video.dart';
+import '../UserScreens/goal.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({super.key});

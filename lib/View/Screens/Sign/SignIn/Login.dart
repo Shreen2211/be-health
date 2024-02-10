@@ -1,13 +1,17 @@
 import 'package:be_health/ViewModel/Bloc/Auth/auth_cubit.dart';
+import 'package:be_health/ViewModel/utils/color.dart';
 import 'package:be_health/ViewModel/utils/image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../component/Widget/elevated_Button_Custom.dart';
-import '../../component/Widget/inputComponent.dart';
-import '../Home/NavBar.dart';
+import '../../../component/Basic/buttonAuth.dart';
+import '../../../component/Basic/elevated_Button_Custom.dart';
+import '../../../component/Basic/inputComponent.dart';
+
+import '../../Home/NavBar.dart';
+import '../Register/SignUp.dart';
+
 import 'ForgetPassword.dart';
-import 'SignUp.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -108,7 +112,7 @@ class Login extends StatelessWidget {
                         onTap: () {
                           Navigator.push(context, MaterialPageRoute(
                             builder: (context) {
-                              return const SignUpScreen();
+                              return const SignUp();
                             },
                           ));
                         },
@@ -122,45 +126,19 @@ class Login extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(right: 15),
-                          width: 55,
-                          height: 55,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(9),
-                          ),
-                          child: const Icon(
-                            Icons.apple,
-                            size: 40,
-                          ),
+                        ButtonAuth(
+                          onTap: () {
+                            cubit.signInWithFacebook();
+                          },
+                          icon: Icons.facebook_outlined,
+                          color: myColor.blue,
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(right: 15),
-                          width: 55,
-                          height: 55,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(9),
-                          ),
-                          child: const Icon(
-                            Icons.facebook_outlined,
-                            color: Colors.blueAccent,
-                            size: 40,
-                          ),
-                        ),
-                        Container(
-                          width: 55,
-                          height: 55,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(9),
-                          ),
-                          child: const Icon(
-                            Icons.g_mobiledata_outlined,
-                            color: Colors.red,
-                            size: 55,
-                          ),
+                        ButtonAuth(
+                          onTap: () {
+                            cubit.signInWithGoogle();
+                          },
+                          icon: Icons.g_mobiledata_outlined,
+                          color: myColor.red,
                         ),
                       ],
                     ),
